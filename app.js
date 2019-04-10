@@ -6,7 +6,6 @@ var logger = require('morgan');
 var expressHbs = require('express-handlebars');
 
 var indexRouter = require('./routes/index');
-var shopify = require('./routes/shopify');
 var usersRouter = require('./routes/users');
 
 var app = express();
@@ -23,7 +22,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/files', express.static(__dirname + '/files'))
 
 app.use('/', indexRouter);
-app.use('/shopify', shopify);
 app.use('/users', usersRouter);
 
 
