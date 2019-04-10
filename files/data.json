@@ -1,0 +1,100 @@
+{   
+	"repair-replace": {
+		"section-one": {
+			"header": "REPLACE",
+			"header-about": "Some circumstances require for door replacement or maybe an eye sore",
+			"section-content": [
+				{
+					"info-header": "Services",
+					"about": "We provide a free no-obligation measure and quote service for new doors. We can supply and install all types of industrial doors, residential doors, gates, shutters and door upgrades, door relocations, and new door openings."
+				}
+			]
+		},
+		"section-two": {
+			"header": "REPAIR",
+			"header-about": "Not all doors needs to be replaced, and in most circumstances it's a hardware issue. We repair, maintain and service an extensive range of Residential, Industrial, Commercial",
+			"section-content": [
+				{
+					"info-header": "Services",
+					"about": "Just like a noisy swing in a swing set, over time your door hardware will wear and become damaged and noisy resulting in the premature degradation of hinges.  The Swinging Solutions team of San Diego™ can install new hardware to exact factory specs. Hinged door repairs may seem like a simple task but to the inexperienced it often becomes a difficult process leading to a door that does not open or close properly if incorrectly repaired. "
+				}
+			]
+		}
+	},
+	"hire-us": {
+		"section-one": {
+			"header": "OUR GUARANTEE",
+			"header-about": "At Swinging Solutions, we believe in exceptional service and quality workmanship, which is why we back every job we do with our \"Done Right Guarantee.\" Our technicians have an average of 10 years of experience in the trades and are fully insured. You can relax knowing we guarantee our workmanship and products we purchase. If there is a problem with the workmanship performed by a Swinging Solutions technician or with a product provided, just give us a call and we'll send someone out to make it right."
+		},
+		"section-two": {
+			"header": "HOW WE WORK",
+			"header-about": "Hiring a service should e easy. Here's what you can expect when you hire us.",
+			"section-content": [
+				{
+					"info-header": "Schedule",
+					"about": "Scheduling with Swinging Solutions is easy. Just one simple phone call hires our technician. You can schedule today by clicking Request Service. Unless special arrangements are made in advance, you should be home during the scheduled appointment. If you prefer an estimate, in most cases we can provide a general price estimate over the phone."
+				},
+				{
+					"info-header": "The Arrival",
+					"about": "Our technicians arrive at the scheduled appointment time in a clearly marked van with a variety of tools and supplies. You will be assigned a technician skilled in the work to be done. Your technician will be wearing a Swinging Solutions shirt and will review the job with you to confirm the length of time needed and the price to complete the job and then start working on your project."
+				},
+				{
+					"info-header": "The Work",
+					"about": "Swinging Solutions will always provide the material to get the job done. We’re also happy to work with whatever materials you supply, but can't guarantee they will work, or even be reliable. If there are additional materials needed for your job after you have supplied the material.",
+					"list-header": "There are a couple options:",
+					"list": ["Have Swinging Solutions pick up the materials for you for an additional fee.", "Our technician can begin work on your project while you do the shopping for any additional materials your technician needs to complete the job."]
+				}
+			]
+		}
+	},
+	"type-of-doors": {
+		"section-one": {
+			"header": "RESIDENTIAL DOORS",
+			"header-about": "Although you may not think of them often, doors serve as a critical component of your home’s functionality and aesthetic. If you aren’t happy with their look—or if they are broken in some way—it is crucial that you contact one of our professionals from our team. Our interior and exterior door installation services can improve the curb appeal and value of your home while also saving you energy by having functioning doors that fit properly.",
+			"section-content": [
+				{
+					"info-header": "Door Type",
+					"about": "Most residential doors are hinged by default and are less complicated than commercial doors, but some might be questionable.",
+					"list-header":  "We can repair or install all kinds of doors, such as:",
+					"list": ["Hinged Glass Doors", "Hinged Closet Doors", "Hinged Shower Doors", "Hinged French Doors", "Hinged Pet Doors", "Hinged Gates"]
+				}
+			]
+		},
+		
+		"section-two": {
+			"header": "COMMERCIAL DOORS",
+			"header-about": "Commercial doors look more complicated then they look, but as long as their hinged they work about the same. Materials is what plays the main factor knowing what to replace it with or repair. For instance; Fire Doors have materials tested in accordance with www.nfpa.org NFA Code Standards.",
+			"section-content": [
+				{
+					"info-header": "Door Type",
+					"about": "Any Hinged / Swinging Office doors to Heavy duty 18-gauge steel fire doors. Custom sizes and doors with glass or louvers.",
+					"list-header":  "We can repair or install all kinds of doors, such as:",
+					"list": ["Hinged Gates", "Hinged Security Doors", "Hinged Office Doors", "Hinged Fire-Rated Steel Doors", "Hinged Wood Doors"]
+				}
+			]
+		}
+	},
+	"how-to-contact": {
+		"section-one": {
+			"section-content": [
+				{
+					"info-header": "Email",
+					"about": ""
+				},
+				{
+					"info-header": "Phone",
+					"about": ""
+				},
+				{
+					"info-header": "Location",
+					"about": ""
+				}
+			]
+		}
+	}
+}
+
+
+
+
+
