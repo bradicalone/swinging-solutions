@@ -5,7 +5,7 @@ var cookie = require('cookie');
 var request = require('request-promise');
 //JSON data to send into HTML
 var data = require('../files/data');
-
+console.log(data);
 /* GET home page. */
 // router.get('/app', function(req, res, next) {
 //   res.render('app', { title: 'Express' });

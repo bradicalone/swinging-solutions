@@ -1,4 +1,4 @@
-'use strict'
+ 'use strict'
 
 function initMap() {
   // The location of Uluru
@@ -66,34 +66,64 @@ function nav(){
 }
 nav()
 
-
+//Slowly move Main picture & Show little Nav Hide little nav
 function scrollAway(){
-	var speed = 0;
-	// var rect = _('page-container').getBoundingClientRect().y;
-	var transformPos =  parseInt(window.getComputedStyle( _('page-container') ).getPropertyValue('transform').replace(/^(.+)\s(-\d.*)\)/gi, '$2') );
 
+	var toggle = false;
+	var speed = 0;
+	var nav = new Nav768()
+
+	var transformPos =  parseInt(window.getComputedStyle( _('page-container') ).getPropertyValue('transform').replace(/^(.+)\s(-\d.*)\)/gi, '$2') );
+	function showLittleNav(top){
+
+		//Show little nav
+		if(top <= 0 && !toggle){
+			_('box-open').style.left = '-5px'
+			requestAnimationFrame(function(timestamp){
+
+				nav.animateClipPath(timestamp)
+		
+			})
+			document.querySelector('#clipping > rect').classList.add('svg-clip-active')
+			toggle = true
+		}
+		//Hide litle nav
+		if(top > 0 && toggle){
+			requestAnimationFrame(function(timestamp){
+
+				nav.animateClipPath(timestamp)
+		
+			})
+			document.querySelector('#clipping > rect').classList.remove('svg-clip-active')
+
+			toggle = false
+		}
+	}
+	//Move main photo slowly up or down
 	function offSet(el){
 		var speed = window.scrollY/9
 		var posY = transformPos + speed
 
-		el.style.transform = 'translate('+0+','+ posY +'px)'
+		if(!toggle) el.style.transform = 'translate('+0+','+ posY +'px)'
 	}
 	
 	window.addEventListener('scroll', function(e){
 
 		offSet(_('page-container'))
 
+		showLittleNav(_('projects')[0].getBoundingClientRect().top) 
 	})
 }
-if(window.innerWidth > 768 ) scrollAway()
+
+ if(window.innerWidth > 768)  scrollAway()
+
 
 
 
 function infoNav(top){
 	//On page load active button top pos gets added to prevent double click same button
 	var preventDblClick = [top]
-	var btnPos = [0,44,86,128]
-	
+	var btnPos = [0,42,82,122]
 	var infoBtn = _('info-btn')
 	var start;
 	var isRunning;
@@ -198,11 +228,13 @@ function infoNav(top){
 		}else{
 			preventDblClick = []
 			var posTarget =	e.target.getBoundingClientRect().top
+
 			preventDblClick.push(posTarget)
 			showBoxOne(e)
+
 			getPos(e)
 			globalInfo.navTargetTxt.push(e.target.textContent)
-			console.log(globalInfo.navTargetTxt);
+
 	
 		} 
 	})
@@ -264,9 +296,15 @@ function InfoModal(){
 
 		 function createElem(modalInfo,content){
 		
+
 			function createContentElem(text){
 				var contentElem = document.createElement('div')
 				contentElem.className = 'content'
+				if(typeof content.servicesSVG !== "undefined"){
+					contentElem.innerHTML = content.servicesSVG.join('\n')
+				}
+			
+				
 
 				var infoHeader = document.createElement('h6')
 				infoHeader.className = 'info-header'
@@ -297,7 +335,7 @@ function InfoModal(){
 					textArea.innerHTML += ul
 				}
 			}
-			//If content section exist in JSON file
+			//If section-content section exist in JSON file
 			if(content['section-content']){
 
 				var sectionContent = content['section-content']
@@ -314,42 +352,67 @@ function InfoModal(){
 			}
 		}
 	this.openModal = function(target,data){
+		var main = document.getElementsByTagName('main')[0]
 	
 		for(var prop in data){
 		
 			if(target === prop){
+
 				var sections = Object.keys(data[prop]);
 				var targetObj = data[prop]
 
+				//Updates modal header tab with globalInfo object every click
+
 				document.querySelector('.top-tab .modal-title').textContent = globalInfo.navTargetTxt
 
-				
+				if(target === 'contact'){
 
-				for(var j = 0; j < sections.length; j++){
-					var content = targetObj[sections[j]]
-					console.log(content);
-					if(sections[j] === "section-one"){
+					//If Element doesn't exist add it. otherwise do nothing
+					if(typeof main.getElementsByClassName('content-container')[0] === 'undefined'){
+
+						main.innerHTML = targetObj.formHeader.html.join('\n')
+						main.innerHTML += targetObj.form.html.join('\n')
 					
-						var header = document.querySelector('.'+sections[j] + ' .header') 
-						header.textContent = content.header
-
-						var headerAbout = _('header-about')[0] 
-						headerAbout.textContent = content['header-about']
-
-						var modalInfo = _('modal-info')[1]
-						createElem(modalInfo, content)
-						
 					}
-					if(sections[j]=== "section-two"){
+				}else{
 
-						var header = document.querySelector('.'+sections[j] + ' .header') 
-						header.textContent = content.header
+					//If Element doesn't exist add it. otherwise do nothing
+					if(typeof _('company-info') === 'undefined') main.innerHTML = data['box-one'].html.join('\n')
+					
 
-						var headerAbout = _('header-about')[1] 
-						headerAbout.textContent = content['header-about']
+					for(var j = 0; j < sections.length; j++){
+						var content = targetObj[sections[j]]
+					
+						if(sections[j] === "section-one"){
+							console.log(target);
+							//tomorrow one of these has to exist for every section.. add the rest of svg so no error
+							if(target === "repair-replace") document.querySelector('.'+sections[j] + '').innerHTML += content.svg.join('\n')
 
-						var modalInfo = _('modal-info')[2]
-						createElem(modalInfo, content)
+							var header = document.querySelector('.'+sections[j] + ' .header') 
+							header.textContent = content.header
+
+							var headerAbout = _('header-about')[0] 
+							headerAbout.textContent = content['header-about']
+
+							var modalInfo = _('modal-info')[1]
+							createElem(modalInfo, content)
+							
+						}
+						if(sections[j]=== "section-two"){
+
+							//UPDATE HERE TOO
+
+							if(target === "repair-replace") document.querySelector('.'+sections[j] + '').innerHTML += content.svg.join('\n')
+
+							var header = document.querySelector('.'+sections[j] + ' .header') 
+							header.textContent = content.header
+
+							var headerAbout = _('header-about')[1] 
+							headerAbout.textContent = content['header-about']
+
+							var modalInfo = _('modal-info')[2]
+							createElem(modalInfo, content)
+						}
 					}
 				}
 			}
@@ -362,23 +425,42 @@ function InfoModal(){
 			modal.style.top = pos.top + "px"
 			modal.style.left = pos.left + "px"
 			modal.style.transform = "scale(1)"
+			//Keeps everything behind from scrolling
 			document.body.style.overflow = 'hidden'
 		
 	}.bind(this)
-
-	console.log('hey');
-
 }
 var infoModal = new InfoModal()
 
 
 
 InfoModal.prototype.click = function(){
-
+	var start;
+	var startPos = 0;
 	var btn = this.btn;
 	var openModal = this.openModal;
 	var fetchJSONFile = this.fetchJSONFile;
 	var closeRemoveData = this.removeContent
+	var navItems = document.querySelectorAll('.nav-items, .box-open')
+
+
+	//Navigation scroll page to element
+	function scrollTo(timestamp, targetTop){
+		if(!start) start = timestamp
+		var runtime = timestamp - start
+		var progress = Math.min(runtime / 700, 1)
+
+		window.scroll(0, startPos + (targetTop * progress) )
+		if(progress >= 1){
+			start = null
+			return;
+		}else {
+			requestAnimationFrame(function(timestamp){
+				scrollTo(timestamp, targetTop)
+			})
+		}
+	}
+
 	//Open Modal
 	for(var i = 0; i < btn.length; i++){
 		btn[i].addEventListener('click', function(e){
@@ -387,6 +469,34 @@ InfoModal.prototype.click = function(){
 			fetchJSONFile('/files/data.json', function(data){
 				openModal(target,data)
 			})
+		})
+	}
+
+	//Navigation large width 
+	for(var j = 0; j < navItems.length; j++) {
+		navItems[j].addEventListener('click',function(e){
+			e.preventDefault()
+			
+			var target = e.target.dataset.name
+
+			//Open Contact Modal
+			if(target === 'contact') {
+			
+				fetchJSONFile('/files/data.json', function(data){
+					openModal(target,data)
+				})
+			}
+			//Scroll to
+			if(typeof target !== 'undefined' && target !== 'contact'){
+
+				//Top position of any element that needs to scroll to
+				var targetTop = _(target).getBoundingClientRect().top
+				startPos = window.scrollY
+
+				requestAnimationFrame(function(timestamp){
+					scrollTo(timestamp, targetTop)
+				})
+			}
 		})
 	}
 
@@ -401,9 +511,16 @@ InfoModal.prototype.click = function(){
 
 		//Remove Content
 		var content = _('content')
-		for(var i = 0; i < content.length; i++){
-			content[i].parentNode.removeChild(content[i])
+		try{
+			for(var i = 0; i < content.length; i++){
+
+				content[i].parentNode.removeChild(content[i])
 			
+			}
+		}catch( e ){
+			if(e instanceof TypeError){
+				return
+			} 
 		}
 	})
 }
@@ -412,28 +529,35 @@ infoModal.click()
 
 
 
-function nav768(){
+function Nav768(){
 	var start;
 	//Elements that can be opened 
 	var elem = document.querySelectorAll('.nav-btn-container, .right-content, section.projects, section.information, section.map')
+	
 
-	var animateClipPath = function(timestamp){
+	this.animateClipPath = function(timestamp){
 		if(!start) start = timestamp
 			var runtime = timestamp - start
 			var progress = Math.min(runtime / 2000, 1)
-			console.log(progress);
+		
 		_('box-open').style.clipPath = 'none'
 		_('box-open').style.clipPath = 'url(#clipping)'
 		if(progress < 1){
 
-		} else return
+		} else{
+			start = null;
+			return;
+		}
 		requestAnimationFrame(animateClipPath)
 	}
 	
+
+	var animateClipPath = this.animateClipPath
 	//Opens or closes nav & elements
 	_('nav-button').addEventListener('click', function(e){
 	
 		if(navigator.userAgent.indexOf("Safari") != -1. && navigator.userAgent.indexOf("Chrome") === -1 ){
+	
 		       requestAnimationFrame(animateClipPath);
 		}
 
@@ -448,7 +572,6 @@ function nav768(){
 
 		var addElem = function(i){
 			//Requestanimation frame run again
-			start = null;
 
 			document.querySelector('#clipping > rect').classList.add('svg-clip-active')
 			_('btn-line')[0].classList.add('lineOneFade')
@@ -499,8 +622,128 @@ function nav768(){
 	//Nav button reaches white element X changes to black
 	window.onscroll = function(){
 		changeBtnColor()
+		
 	}
 }
-if(window.innerWidth < 768 ) nav768()
+if(window.innerWidth < 768 ) var nav768 = new Nav768();
+
+
+
+
+var topCarousel = (function(){
+	var containerWidth = _('img-container').getBoundingClientRect().width + 100
+
+	var images = []
+	var load = 0
+
+	for(var i = 0; i < 8; i++){
+
+		var img = new Image();
+		load++
+
+		try{
+			throw i
+		}catch(i){
+
+			img.onload = function(){
+				
+				images.push(this)
+		
+				var  appended = _('img-container').appendChild(this)
+				appended.className += 'slider';
+		
+				//When images are done loading sort them in order
+				if(load === images.length){
+					images.sort(function(a,b){
+						return a - b
+					})
+				var sliderImg = _('slider')
+				for(var j = 0; j < sliderImg.length; j++){
+					var siblingWidth = sliderImg[1].getBoundingClientRect().width + 50  //transform: translate3d(1650px, 0px, -670px) rotateY(37deg);
+					sliderImg[0].style.transform = 'translate3d('+ -(containerWidth+siblingWidth)  +'px, 0, -670px) rotateY(-37deg)'
+					sliderImg[1].style.transform = 'translate3d('+ -containerWidth  + 'px, 0, -249px) rotateY(-17deg)'
+					sliderImg[2].style.transform = 'translate3d(0, 0, 0px) rotateY(0deg)'
+					sliderImg[3].style.transform = 'translate3d('+ containerWidth + 'px, 0, -249px) rotateY(17deg)'
+					sliderImg[4].style.transform = 'translate3d('+ (containerWidth+siblingWidth) + 'px, 0, -670px) rotateY(37deg)'
+
+					if(j>4) sliderImg[j].style.display = 'none'
+							
+				}
+				//Positions buttons perfectly within image container
+				var buttonHeight = _('button-container').clientHeight + 40
+				var imgHeight = images[3].clientHeight
+				var imgContainer = _('img-container').clientHeight
+				var btnPos = ( imgContainer-imgHeight ) - buttonHeight
+			
+				_('button-container').style.bottom = btnPos + 'px'
+	 
+
+					mainPhoto();
+				}
+			}
+			img.src = 'images/slider/hinged-main-'+ i + '.jpg'
+		}
+	}
+	return {
+		img: images,
+		parentWidth : containerWidth
+	}
+})();
+
+function mainPhoto(){
+
+		var j = 0
+		_('button-container').addEventListener('click', function(e){
+
+			if(e.target.classList[0] === 'img-btn'){
+			
+				var images = topCarousel.img
+				var parentWidth = topCarousel.parentWidth
+				var last = images.length - 1;
+
+				var btn = e.target.classList[1]
+			
+
+				var rotate = function(){
+				
+					for(var i = 0; i < images.length; i++){
+			
+						 images[0].style.transform = 'translate3d('+ -(parentWidth*2)  +'px, 0, -249px) rotateY(-17deg)'
+						 images[1].style.transform = 'translate3d('+ -parentWidth  + 'px, 0, -249px) rotateY(-17deg)'
+						 images[2].style.transform = 'translate3d(0, 0, 0px) rotateY(0deg)'
+						 images[3].style.transform = 'translate3d('+ parentWidth + 'px, 0, -249px) rotateY(17deg)'
+						 images[4].style.transform = 'translate3d('+ (parentWidth*2) + 'px, 0, -249px) rotateY(17deg)'
+			
+						i > 4 ? images[i].style.display = 'none' : images[i].style.display = 'block'
+					}
+				}
+				if(btn === 'btn-left'){
+				
+					var first = images.shift()
+					images.push(first)
+				
+					rotate()
+					
+				}
+				if(btn === 'btn-right'){
+			
+					var last = images.pop()
+					images.unshift(last)
+
+					rotate()
+				}
+			}
+		})
+	};
+
+
+	
+	window.onresize = function(e){
+if(window.innerWidth < 768){
+ 	  // scrollAway()
+ 		
+
+	}
+}
 
 

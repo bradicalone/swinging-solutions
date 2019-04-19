@@ -1,9 +1,9 @@
 <nav class="main-nav">
 	<div class="navbar">
 		<ul class="nav-items">
-			<li><a href="/home">HOME</a></li>
-			<li><a href="/about">ABOUT</a></li>
-			<li><a href="/contact">CONTACT</a></li>
+			<li><a data-name="main" href="/">HOME</a></li>
+			<li><a data-name="contact" href="#">CONTACT</a></li>
+			<li><a data-name="information" href="#">COMPANY</a></li>
 			<li><a href="/gallery">GALLERY</a></li>
 		</ul>
 	</div>
@@ -32,6 +32,7 @@
 		</svg>
 	</div>
 </nav>
+
 <section class="main">
 	<!-- Small screen navigtion open -->
 	<div class="nav-btn-container">
@@ -39,14 +40,15 @@
 		  <defs>
 		    <clipPath id="clipping">
 	
-		      		<rect x="0" y="0" width="72" height="156"/>
+		      		<rect x="0" y="0" width="72" height="172"/>
 		  	
 		    </clipPath>
 		  </defs>
 		</svg>
 		<div class="box-open">
-			<div class="info-icon home">
-				<svg xmlns="http://www.w3.org/2000/svg" width="30" height="26" viewBox="0 0 30 26">
+			<div class="info-icon">
+				<a href="/">
+				<svg data-name="main" xmlns="http://www.w3.org/2000/svg" width="30" height="26" viewBox="0 0 30 26">
 					<path fill="#030044" d="M29.7,11.7l-3.9-3.2V1c0-0.5-0.4-0.9-0.9-0.9h-3.1c-0.5,0-0.9,0.4-0.9,0.9v3.4l-4.8-4
 						c-0.6-0.5-1.6-0.5-2.2,0C11,2.6,0.2,11.7,0.2,11.7c-0.3,0.3-0.4,0.8,0,1.2l0.8,1c0.3,0.4,0.9,0.4,1.3,0.1L14.9,3.5l12.7,10.6
 						c0.4,0.3,0.9,0.3,1.3-0.1l0.9-1C30.1,12.6,30.1,12.1,29.7,11.7z"/>
@@ -57,19 +59,36 @@
 						C13.1,21.9,13,21.9,13,21.9z M12.9,18.8h-2c-0.1,0-0.1-0.1-0.1-0.1v-2.1c0-0.1,0.1-0.1,0.1-0.1H13c0.1,0,0.1,0.1,0.1,0.1l0,2.1
 						C13.1,18.8,13,18.8,12.9,18.8z"/>
 				</svg>
+			</a>
 			</div>
-			<div class="info-icon gallery">
-				<svg xmlns="http://www.w3.org/2000/svg" width="30" height="25.3" viewBox="0 0 30 25.3">
-				<path fill="#030044" stroke="#232323" stroke-width="7.077124e-02" stroke-miterlimit="10" d="M8.2,21.8c-2.7,0-4.9-2.3-4.9-5.1V6.2
-					H2.5C1.2,6.2,0,7.4,0,8.8v13.9c0,1.4,1.1,2.6,2.5,2.6h20c1.4,0,2.5-1.2,2.5-2.6v-0.9H8.2z"/>
-				<path fill="#030044" d="M27.6,0h-20C6.2,0,5,1.2,5,2.6v14.9c0,1.4,1.1,2.6,2.5,2.6h20c1.4,0,2.5-1.2,2.5-2.6V2.6
-					C30,1.2,28.9,0,27.6,0z M10.8,3.7c1.3,0,2.4,1.1,2.4,2.5s-1.1,2.5-2.4,2.5S8.4,7.6,8.4,6.2S9.5,3.7,10.8,3.7z M26.6,15.6
-					c0,0.5-0.4,0.9-0.9,0.9H9.2c-0.5,0-0.9-0.4-0.9-0.9V14c0,0,2.5-2.5,3.1-3.1c0,0,0.2-0.1,0.2-0.1c0.1,0,0.2,0.1,0.2,0.1
-					c0.6,0.5,2.5,2.4,2.5,2.4l7.2-7.7c0.1-0.1,0.2-0.1,0.3,0l4.7,4.9c0.1,0.1,0.1,0.2,0.1,0.3V15.6z"/>
+			<div class="info-icon">
+				<svg version="1.1" id="contact" data-name="contact" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+					 viewBox="0 0 30 30.301" width="30" height="30.301" xml:space="preserve">
+					<g>
+						<path fill="#030044" d="M23.63,0H4.415C3.417,0,2.6,0.836,2.6,1.835v1.73h2.11c1.393,0,2.523,1.127,2.523,2.52c0,1.393-1.129,2.52-2.523,2.52H2.6
+							v4.057h2.11c1.393,0,2.523,1.127,2.523,2.52c0,1.393-1.129,2.52-2.523,2.52H2.6v3.995h2.11c1.393,0,2.523,1.157,2.523,2.551
+							s-1.129,2.551-2.523,2.551H2.6v1.695c0,0.998,0.816,1.808,1.814,1.808H23.63c0.998,0,1.834-0.81,1.834-1.808V1.835
+							C25.464,0.836,24.629,0,23.63,0z M21.674,23.627c0,0-1.016,0.549-1.355,0.732c-1.71,0.925-5.205-2.219-7.806-7.025
+							c-2.601-4.807-3.321-9.453-1.611-10.379l1.354-0.733c0.401-0.217,0.901-0.068,1.118,0.333l2.145,3.965
+							c0.217,0.401,0.068,0.901-0.333,1.118l-1.353,0.733l3.558,6.575l1.353-0.733c0.193-0.104,0.418-0.128,0.628-0.065
+							c0.21,0.063,0.386,0.205,0.49,0.398l2.145,3.966C22.224,22.91,22.075,23.41,21.674,23.627z"/>
+						<path fill="#030044" id="XMLID_103_" d="M1.514,7.595H4.71c0.836,0,1.514-0.677,1.514-1.514c0-0.836-0.678-1.514-1.514-1.514H1.514
+							C0.677,4.568,0,5.245,0,6.082C0,6.918,0.677,7.595,1.514,7.595z"/>
+						<path fill="#030044" id="XMLID_102_" d="M1.514,16.677H4.71c0.836,0,1.514-0.678,1.514-1.514c0-0.836-0.678-1.514-1.514-1.514H1.514
+							C0.677,13.65,0,14.327,0,15.164C0,16,0.677,16.677,1.514,16.677z"/>
+						<path fill="#030044" id="XMLID_101_" d="M6.224,24.246c0-0.836-0.678-1.514-1.514-1.514H1.514C0.677,22.732,0,23.409,0,24.246
+							c0,0.836,0.677,1.514,1.514,1.514H4.71C5.546,25.759,6.224,25.082,6.224,24.246z"/>
+						<path fill="#030044" id="XMLID_100_" d="M28.833,8.478h-1.86v4.667h1.86c0.644,0,1.167-0.522,1.167-1.167V9.645
+							C30,9.001,29.478,8.478,28.833,8.478z"/>
+						<path id="XMLID_99_" d="M28.833,15.321h-1.86v4.667h1.86c0.644,0,1.167-0.522,1.167-1.167v-2.334
+							C30,15.844,29.478,15.321,28.833,15.321z"/>
+						<path fill="#030044" id="XMLID_98_" d="M28.833,22.164h-1.86v4.667h1.86c0.644,0,1.167-0.522,1.167-1.167v-2.333
+							C30,22.687,29.478,22.164,28.833,22.164z"/>
+					</g>
 				</svg>
 			</div>
-			<div class="info-icon about">
-				<svg xmlns="http://www.w3.org/2000/svg" width="30" height="24.5" viewBox="0 0 30 24.5">
+			<div class="info-icon">
+				<svg data-name="information" xmlns="http://www.w3.org/2000/svg" width="30" height="24.5" viewBox="0 0 30 24.5">
 					<path fill="#030044" d="M27.9,0H2.1C0.9,0,0,0.9,0,2.1v1.1h30V2.1C30,0.9,29.1,0,27.9,0z"/>
 					<path fill="#030044" d="M0,5.1v17.4c0,1.1,0.9,2.1,2.1,2.1h25.9c1.1,0,2.1-0.9,2.1-2.1V5.1H0z M9.2,9.6c1.9,0,3.4,1.5,3.4,3.4
 						c0,1.9-1.5,3.4-3.4,3.4c-1.9,0-3.4-1.5-3.4-3.4C5.8,11.1,7.3,9.6,9.2,9.6z M15,20.4c0,0.4-0.3,0.7-0.7,0.7H4.1
@@ -79,6 +98,17 @@
 						 M26.9,10.7c0,0.2-0.2,0.4-0.4,0.4h-7.8c-0.2,0-0.4-0.2-0.4-0.4V9.8c0-0.2,0.2-0.4,0.4-0.4h7.8c0.2,0,0.4,0.2,0.4,0.4V10.7z"/>
 				</svg>
 			</div>
+			<div class="info-icon">
+				<svg xmlns="http://www.w3.org/2000/svg" width="30" height="25.3" viewBox="0 0 30 25.3">
+				<path fill="#030044" stroke="#232323" stroke-width="7.077124e-02" stroke-miterlimit="10" d="M8.2,21.8c-2.7,0-4.9-2.3-4.9-5.1V6.2
+					H2.5C1.2,6.2,0,7.4,0,8.8v13.9c0,1.4,1.1,2.6,2.5,2.6h20c1.4,0,2.5-1.2,2.5-2.6v-0.9H8.2z"/>
+				<path fill="#030044" d="M27.6,0h-20C6.2,0,5,1.2,5,2.6v14.9c0,1.4,1.1,2.6,2.5,2.6h20c1.4,0,2.5-1.2,2.5-2.6V2.6
+					C30,1.2,28.9,0,27.6,0z M10.8,3.7c1.3,0,2.4,1.1,2.4,2.5s-1.1,2.5-2.4,2.5S8.4,7.6,8.4,6.2S9.5,3.7,10.8,3.7z M26.6,15.6
+					c0,0.5-0.4,0.9-0.9,0.9H9.2c-0.5,0-0.9-0.4-0.9-0.9V14c0,0,2.5-2.5,3.1-3.1c0,0,0.2-0.1,0.2-0.1c0.1,0,0.2,0.1,0.2,0.1
+					c0.6,0.5,2.5,2.4,2.5,2.4l7.2-7.7c0.1-0.1,0.2-0.1,0.3,0l4.7,4.9c0.1,0.1,0.1,0.2,0.1,0.3V15.6z"/>
+				</svg>
+			</div>
+
 		</div>
 		<!-- <div> -->
 		<div class="nav-button">
@@ -96,21 +126,21 @@
 	<div class="left-content">
 		<header class="header-content">
 			<h1 class="slogan">Swinging <br>Solutions</h1>
-			<h4>Industrial & Commercial <br>Hinged Doors</h4>
+			<h4>Industrial & Commercial <br>Hinged Door Services</h4>
 		</header>
 	</div>
+	<div class="bottom-content">
+			<i class="fas fa-phone"><h3>760-295-8500</h3></i>
+	</div>
+	
+
 	<!-- Right Page -->
 	<div class="right-content">
-		<div class="bottom-content">
-			<h4>Your one stop shop for renewing or replacing your residential and commercial hinged doors.</h4>
-		</div>
+		
 		<div class="page-container">
 
 			<div class="img-container">
-				<!-- <img class="main-img" src="images/door.jpg" alt="main page swinging door"/> -->
-				<img class="main-img" src="images/hinged-main-one.jpg" alt="main page swinging door"/>
-			</div>
-			<div class="button-container">
+				<div class="button-container">
 				<span class="img-btn btn-left">
 					<p><</p>
 				</span>
@@ -118,10 +148,11 @@
 					<p>></p>
 				</span>
 			</div>
-			<!-- <div class="bottom-content">
-			<h4>Your one stop shop for renewing or replacing your residential and commercial hinged doors.</h4>
-		</div> -->
+			</div>
+
+
 		</div>
+		<h4 class="favorite-quote">San Diego's Favorite Residential and Commercial Door Repairer</h4>
 	</div>
 </section>
 <section class="projects">
@@ -157,7 +188,7 @@
 	<div class="container-lg header">
 		<div>
 			<h4>INFORMATIONAL DOOR SERVICES</h4>
-			<p class="info-about">A beautiful door, properly framed and that fits within your home's décor is something that will not go unappreciated, especially on exterior doors when the air conditioner is running in the summer and the furnace is going in the winter. Below is everything you need to know regarding our door services leading up to contacting us. </p>
+			<p class="info-about">A beautiful door, properly framed and that fits within your home's décor is something that will not go unappreciated, especially on exterior doors when the air conditioner is running in the summer and the furnace is going in the winter. Below are steps you need to know regarding our door services leading up to contacting us. </p>
 		</div>
 	</div>
 	<div class="container-lg grid">
@@ -183,7 +214,7 @@
 				<div class="box-one repair-replace">
 					<div class="item-wrapper">
 						<div class="item-one">
-							<div class="item-content" data-name="repair-replace" data-section="section-one">
+							<div class="item-content" data-name="repair-replace">
 								<div class="info-icon">
 									<svg xmlns="http://www.w3.org/2000/svg" width="21.5" height="25" viewBox="0 0 21.5 25">
 										<path d="M18,25c-0.1,0-0.2-0.1-0.2-0.3c0-0.4,0-0.8,0-1.1c0,0,0,0,0-0.1c0,0,0,0-0.1,0c-1.6,0-2.8,0-4.6,0c-0.6,0-1.4-0.5-1.4-1.3
@@ -666,7 +697,7 @@
 				<div class="box-two">
 					<div class="item-wrapper">
 						<div class="item-one">
-							<div class="item-content">
+							<div class="item-content" data-name="contact">
 								<div class="info-icon">
 									<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20">
 										<path fill="#020202" d="M19.2,6.1c-0.5-1.2-1.2-2.3-2.1-3.2c-0.9-0.9-2-1.6-3.2-2.1C12.7,0.3,11.3,0,10,0S7.3,0.3,6.1,0.8
@@ -761,29 +792,10 @@
 			</div>
 		</header>
 		<main>
-			<section class="section-one">
-				<div class="section-one-content">
-					<h5 class="header"></h5>
-					<p class="header-about"></p>
-				</div>
-			</section>
-			<section class="section-content">
-				<div class="modal-info">
-				</div>
-			</section>
-			<section class="section-two">
-				<div class="section-two-content">
-					<h5 class="header"></h5>
-					<p class="header-about"></p>
-				</div>
-			</section>
-			<section class="section-content">
-				<div class="modal-info">
-				</div>
-			</section>
 		</main>
 	</div>
 </div>
+
 <section class="map">
 	<span class="metadata-marker" data-region_tag="html-body"></span>
 	<div id="map"></div>
